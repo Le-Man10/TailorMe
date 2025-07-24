@@ -32,8 +32,9 @@ public class sercurityConfiguration {
                 //allows for POST, PUT, DELETE mappings with authentication
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authorize->{
-                    authorize.requestMatchers("/Login").permitAll();
-                    authorize.requestMatchers("/test-auth").hasAuthority("ADMIN");
+                    authorize.requestMatchers("user/login").permitAll();
+                    authorize.requestMatchers("user/signup").permitAll();
+                    authorize.requestMatchers("user/codeLogin").permitAll();
                     authorize.requestMatchers(HttpMethod.POST ,"/Admin/addNewTeam").hasAuthority("ADMIN");
                   authorize.anyRequest().authenticated();
                 })

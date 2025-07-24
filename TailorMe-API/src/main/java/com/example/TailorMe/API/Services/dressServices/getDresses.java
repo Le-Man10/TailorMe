@@ -1,4 +1,4 @@
-package com.example.TailorMe.API.Services;
+package com.example.TailorMe.API.Services.dressServices;
 
 import com.example.TailorMe.API.Exceptionhandling.DressDoesNotExist;
 import com.example.TailorMe.API.Exceptionhandling.NoDressesExistException;

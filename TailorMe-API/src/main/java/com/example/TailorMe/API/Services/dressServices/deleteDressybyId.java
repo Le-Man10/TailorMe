@@ -1,7 +1,10 @@
-package com.example.TailorMe.API.Services;
+package com.example.TailorMe.API.Services.dressServices;
 
 import com.example.TailorMe.API.Repositories.dressRepository;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+@Service
 
 public class deleteDressybyId {
     private final dressRepository dressReop;

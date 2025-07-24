@@ -1,15 +1,15 @@
 package com.example.TailorMe.API.Models;
+
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "dresses")
-public class Dress {
+@Table(name = "blouse")
+public class Blouse {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @NotNull(message = "Please enter a name for your dress")
-    private String dressName;
+    private Long Id;
+    @Column(name = "blouseName")
+    private int blouseName;
     @Column(name = "shoulders")
     private int shoulders;
     @Column(name = "bust")
@@ -20,23 +20,29 @@ public class Dress {
     private int bodice;
     @Column(name = "hip")
     private int hip;
-    @Column(name = "dressLength")
-    private int dressLength;
-    @Column(name = "sleeveLength")
-    private int sleeveLength;
-    @Column(name = "armCircumference")
-    private int armCircumference;
+    @Column(name = "aroundArm")
+    private int aroundArm;
+    @Column(name = "sleeve")
+    private int sleeve;
 
     @ManyToOne
     @JoinColumn(name = "userId",nullable = false,insertable = false,updatable = false)
     private user user;
 
     public Long getId() {
-        return id;
+        return Id;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        Id = id;
+    }
+
+    public int getBlouseName() {
+        return blouseName;
+    }
+
+    public void setBlouseName(int blouseName) {
+        this.blouseName = blouseName;
     }
 
     public int getShoulders() {
@@ -79,27 +85,27 @@ public class Dress {
         this.hip = hip;
     }
 
-    public int getDressLength() {
-        return dressLength;
+    public int getAroundArm() {
+        return aroundArm;
     }
 
-    public void setDressLength(int dressLength) {
-        this.dressLength = dressLength;
+    public void setAroundArm(int aroundArm) {
+        this.aroundArm = aroundArm;
     }
 
-    public int getSleeveLength() {
-        return sleeveLength;
+    public int getSleeve() {
+        return sleeve;
     }
 
-    public void setSleeveLength(int sleeveLength) {
-        this.sleeveLength = sleeveLength;
+    public void setSleeve(int sleeve) {
+        this.sleeve = sleeve;
     }
 
-    public int getArmCircumference() {
-        return armCircumference;
+    public com.example.TailorMe.API.Models.user getUser() {
+        return user;
     }
 
-    public void setArmCircumference(int armCircumference) {
-        this.armCircumference = armCircumference;
+    public void setUser(com.example.TailorMe.API.Models.user user) {
+        this.user = user;
     }
 }
