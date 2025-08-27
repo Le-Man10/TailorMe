@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
 import javax.annotation.processing.Generated;
+import java.sql.Date;
 
 @Entity
 @Table(name = "shirtsMen")
@@ -26,11 +27,14 @@ public class ShirtsMen {
     private int aroundArm;
     @Column(name = "cuff")
     private int cuff;
-
+    @NotNull
+    @Column(name = "DOC",insertable = false,updatable = false)
+    private Date dateOfCreation ;
+    @NotNull
+    private Date dueDate ;
     @ManyToOne
-    @JoinColumn(name = "userId",nullable = false)
-    private user user;
-
+    @JoinColumn(name = "clientId",nullable = false,insertable = false,updatable = false)
+    private Client client;
     public Long getId() {
         return Id;
     }
@@ -95,11 +99,5 @@ public class ShirtsMen {
         this.cuff = cuff;
     }
 
-    public com.example.TailorMe.API.Models.user getUser() {
-        return user;
-    }
 
-    public void setUser(com.example.TailorMe.API.Models.user user) {
-        this.user = user;
-    }
 }

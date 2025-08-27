@@ -31,21 +31,13 @@ public class user {
     @Column(name = "password",nullable = false)
     private String password;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "userId")
-    private List<Dress> dresses;
+
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "userId")
     private OneTimeCodeModel OTP;
 
-    public List<Dress> getDresses() {
-        return dresses;
-    }
 
-    public void setDresses(List<Dress> dresses) {
-        this.dresses = dresses;
-    }
 
     public OneTimeCodeModel getOTP() {
         return OTP;

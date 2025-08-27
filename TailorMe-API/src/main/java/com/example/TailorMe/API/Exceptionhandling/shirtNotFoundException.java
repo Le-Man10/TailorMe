@@ -2,10 +2,9 @@ package com.example.TailorMe.API.Exceptionhandling;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
-
 @ResponseStatus(HttpStatus.NOT_FOUND)
-public class codeDoesntExistException extends RuntimeException{
-    public codeDoesntExistException(){
+public class shirtNotFoundException extends RuntimeException{
+    public shirtNotFoundException(){
         super("Invalid code");
     }
 }

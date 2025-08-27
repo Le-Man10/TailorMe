@@ -2,12 +2,15 @@ package com.example.TailorMe.API.Models;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
+import java.sql.Date;
+
 @Entity
 @Table(name = "dresses")
 public class Dress {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @NotNull(message = "Please enter a name for your dress")
     private String dressName;
     @Column(name = "shoulders")
@@ -26,10 +29,14 @@ public class Dress {
     private int sleeveLength;
     @Column(name = "armCircumference")
     private int armCircumference;
-
+    @NotNull
+    @Column(name = "DOC",insertable = false,updatable = false)
+    private Date dateOfCreation ;
+    @NotNull
+    private Date dueDate ;
     @ManyToOne
-    @JoinColumn(name = "userId",nullable = false,insertable = false,updatable = false)
-    private user user;
+    @JoinColumn(name = "clientId",nullable = false,insertable = false,updatable = false)
+    private Client client;
 
     public Long getId() {
         return id;

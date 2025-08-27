@@ -3,6 +3,8 @@ package com.example.TailorMe.API.Models;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
+import java.sql.Date;
+
 @Entity
 @Table(name = "skirt")
 public class skirt {
@@ -18,10 +20,15 @@ public class skirt {
     private int hip;
     @Column(name = "Length")
     private int Length;
+    @NotNull
+    @Column(name = "DOC",insertable = false,updatable = false)
+    private Date dateOfCreation ;
+    @NotNull
+    private Date dueDate ;
 
     @ManyToOne
-    @JoinColumn(name = "userId",nullable = false)
-    private user user;
+    @JoinColumn(name = "clientId",nullable = false,insertable = false,updatable = false)
+    private Client client;
 
     public Long getId() {
         return Id;
@@ -63,11 +70,5 @@ public class skirt {
         Length = length;
     }
 
-    public com.example.TailorMe.API.Models.user getUser() {
-        return user;
-    }
 
-    public void setUser(com.example.TailorMe.API.Models.user user) {
-        this.user = user;
-    }
 }

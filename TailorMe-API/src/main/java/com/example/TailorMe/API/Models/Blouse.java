@@ -1,6 +1,9 @@
 package com.example.TailorMe.API.Models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+
+import java.sql.Date;
 
 @Entity
 @Table(name = "blouse")
@@ -8,6 +11,7 @@ public class Blouse {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
+    @NotNull
     @Column(name = "blouseName")
     private int blouseName;
     @Column(name = "shoulders")
@@ -24,10 +28,18 @@ public class Blouse {
     private int aroundArm;
     @Column(name = "sleeve")
     private int sleeve;
+    @NotNull
+    @Column(name = "DOC",insertable = false,updatable = false)
+    private Date dateOfCreation ;
+    @NotNull
+    private Date dueDate ;
+
+
 
     @ManyToOne
-    @JoinColumn(name = "userId",nullable = false,insertable = false,updatable = false)
-    private user user;
+    @JoinColumn(name = "clientId",nullable = false,insertable = false,updatable = false)
+    @Transient
+    private Client client;
 
     public Long getId() {
         return Id;
@@ -101,11 +113,5 @@ public class Blouse {
         this.sleeve = sleeve;
     }
 
-    public com.example.TailorMe.API.Models.user getUser() {
-        return user;
-    }
 
-    public void setUser(com.example.TailorMe.API.Models.user user) {
-        this.user = user;
-    }
 }
